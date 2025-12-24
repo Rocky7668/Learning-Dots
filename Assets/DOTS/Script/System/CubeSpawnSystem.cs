@@ -18,6 +18,12 @@ public partial struct CubeSpawnSystem : ISystem
 
                 ecb.SetComponent(cubeEntity, LocalTransform.FromPosition(pos));
 
+                ecb.AddComponent(cubeEntity, new FloatAnimation {
+                    Amplitude = 0.5f,
+                    Speed = 2f + (i * 0.01f),
+                    StartY = 1f
+                });
+
             }
             ecb.RemoveComponent<CubeSpawner>(SystemAPI.GetSingletonEntity<CubeSpawner>());
         }
